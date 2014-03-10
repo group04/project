@@ -11,19 +11,19 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.inject.Inject;
 
-import com.groupproject.data.ClientServer;
-import com.groupproject.data.FileExchangeServer;
+import com.groupproject.data.ClientDBRepository;
+import com.groupproject.data.FileDBRepository;
 import com.groupproject.data.FileStorage;
-import com.groupproject.model.FileExchange;
+import com.groupproject.model.File;
 import com.groupproject.rest.GenerateString;
 
 
 
 public class FileVerify {
 	@Inject
-	private ClientServer clientserver;
+	private ClientDBRepository clientserver;
 	@Inject
-	private FileExchangeServer fileexchangeserver;
+	private FileDBRepository fileexchangeserver;
 	@Inject
 	private Verify verifyfil;
 	@Inject
@@ -63,24 +63,29 @@ public class FileVerify {
 	 * @return
 	 */
 	public String getFileID(){
-		GenerateString.generateString(20);
 		return GenerateString.generateString(20);
+		
+	}
+	
+	public String getFilekey(String fileid){
+		String filekey=fileid+GenerateString.generateString(5);
+		return filekey;
 		
 	}
 	/**
 	 * create an folder use the name of the fileID and Storage the doc in the catalog
 	 * return the folder relative path
 	 */
-	public void storageDoc(String URL,byte[] doc,byte[] eoo,String filename){
-		filestorage.storage(URL, filename, doc); 
-		filestorage.storage(URL, "EOO for "+filename, eoo);
+	public void storageDoc(String key,byte[] doc){
+		filestorage.storage(key,doc); 
+
 				
 	}
 	/**
 	 * storage the FileExchange in the database
 	 * 
 	 */
-	public void Stroage(FileExchange fileexchange){
+	public void Stroage(File fileexchange){
 		fileexchangeserver.save(fileexchange);
 		
 	}
@@ -88,8 +93,8 @@ public class FileVerify {
 	 * send URLto the communication class
 	 * 
 	 */
-	public void giveURL(String url,String fileid,String clientid){
-		//communication.Send(email, content);
+	public void SetEoo(String fileid){
+		communication.sendEoo(fileid);
 		
 	}
 	/**

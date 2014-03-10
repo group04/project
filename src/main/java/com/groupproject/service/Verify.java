@@ -13,24 +13,17 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.inject.Inject;
 
-import com.groupproject.data.ClientServer;
+import com.groupproject.data.ClientDBRepository;
 
 
 public class Verify {
 	@Inject
-	private ClientServer clientserver;
+	private ClientDBRepository clientserver;
 
 	
 /**
  * give the clientID file and the encryption file
  * return true  if the encryption file is come from the client  or false
- * @throws InvalidKeySpecException 
- * @throws NoSuchAlgorithmException 
- * @throws IOException 
- * @throws BadPaddingException 
- * @throws IllegalBlockSizeException 
- * @throws NoSuchPaddingException 
- * @throws InvalidKeyException 
  */
 	public Boolean verify(byte[] eoo,byte[] doc,String ClientID){
 		String publickey=clientserver.getKey(ClientID);

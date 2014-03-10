@@ -1,6 +1,7 @@
 package com.groupproject.rest;
 
 import javax.inject.Inject;
+import javax.ws.rs.Path;
 
 import com.groupproject.data.FileStorage;
 
@@ -11,6 +12,7 @@ import com.groupproject.data.FileStorage;
  * @author hp
  *
  */
+@Path("/get")
 public class GetEOOFileRest {
 	@Inject
 	private FileStorage filestorage;
@@ -18,10 +20,13 @@ public class GetEOOFileRest {
 	 * a request given a fileID and the clientID to get the EOO file
 	 * 
 	 */
+	@Path("/eoo")
 	public void getEoo(String fileid){
-		filestorage.getEOOStream(fileid);
+		filestorage.getStream(fileid);
 		
 		
 	}
+	
+	
 
 }

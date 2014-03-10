@@ -2,16 +2,16 @@ package com.groupproject.data;
 
 public class FileStorage {
 	/**
-	 * given a path and name and byte[]
+	 * given a key and byte[]
 	 * the file will be storaged in the path (need S3)
 	 */
-	public void storage(String path,String name,byte[] doc){
+	public void storage(String key,byte[] doc){
 		
 	}
 	/**
-	 * give a fileid get the EOO byte[]
+	 * give a key get the EOO byte[]
 	 */
-	public Byte[] getEOOStream(String fileid){
+	public byte[] getStream(String fileid){
 		//FileExchange class
 		return null; 
 		

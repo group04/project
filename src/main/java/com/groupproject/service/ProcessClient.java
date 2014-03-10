@@ -5,13 +5,13 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.inject.Inject;
 
-import com.groupproject.data.ClientServer;
+import com.groupproject.data.ClientDBRepository;
 import com.groupproject.model.Client;
 
 
 public class ProcessClient {
 	@Inject
-	private ClientServer clientserver;
+	private ClientDBRepository clientserver;
 	
 	
 	/**
