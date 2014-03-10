@@ -37,12 +37,12 @@ public class ClientRest {
 	//@Produces(MediaType.APPLICATION_JSON)
 	public String creatClient(@PathParam("id") String id) {
 		
-		/*if(!processClient.verify(id))//verify the id  whether the id has already in used.
+		if(!processClient.verify(id))//verify the id  whether the id has already in used.
 		{
 			return processClient.generateKey(id);
-		}*/
+		}
 		//return Response.status(200).entity("salhdfjskahf").build();
-		return "hello world";
+		return "notresponse";
 	}
 	
 }

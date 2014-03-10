@@ -4,6 +4,17 @@ public class Client {
 	private String clientID;
 	private String publicKey;
 	private String privateKey;
+	private int nummessage;
+	
+	public Client(){
+		this.nummessage=0;
+	}
+	public int getNummessage() {
+		return nummessage;
+	}
+	public void setNummessage(int nummessage) {
+		this.nummessage = nummessage;
+	}
 	public String getClientID() {
 		return clientID;
 	}

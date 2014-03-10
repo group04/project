@@ -15,6 +15,7 @@ import com.groupproject.data.ClientServer;
 import com.groupproject.data.FileExchangeServer;
 import com.groupproject.data.FileStorage;
 import com.groupproject.model.FileExchange;
+import com.groupproject.rest.GenerateString;
 
 
 
@@ -62,8 +63,8 @@ public class FileVerify {
 	 * @return
 	 */
 	public String getFileID(){
-		
-		return null;
+		GenerateString.generateString(20);
+		return GenerateString.generateString(20);
 		
 	}
 	/**

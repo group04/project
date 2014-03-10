@@ -1,10 +1,16 @@
 package com.groupproject.model;
 
+/**
+ * @author hp
+ *
+ */
 public class FileExchange {
 	private String fileID;
 	private String clientSender;
 	private String clientRecever;
-	private String fileURL;
+	private String keyfordoc;
+	private String Eoo;
+	private String Eor;
 	private String filename;
 	private int state;
 	private final int NEW=0;//the directory donot storage any file
@@ -13,6 +19,25 @@ public class FileExchange {
 	private final int SUCCESSFUL=3;//the directory storage three file EOR EOO doc
 	private final int ABORT=-1;
 
+	public String getKeyfordoc() {
+		return keyfordoc;
+	}
+	public void setKeyfordoc(String keyfordoc) {
+		this.keyfordoc = keyfordoc;
+	}
+	
+	public String getEoo() {
+		return Eoo;
+	}
+	public void setEoo(String eoo) {
+		Eoo = eoo;
+	}
+	public String getEor() {
+		return Eor;
+	}
+	public void setEor(String eor) {
+		Eor = eor;
+	}
 	public String getFileID() {
 		return fileID;
 	}
@@ -31,12 +56,7 @@ public class FileExchange {
 	public void setClientRecever(String clientRecever) {
 		this.clientRecever = clientRecever;
 	}
-	public String getFileURL() {
-		return fileURL;
-	}
-	public void setFileURL(String fileURL) {
-		this.fileURL = fileURL;
-	}
+	
 	public int getState() {
 		return state;
 	}
