@@ -29,13 +29,19 @@ public class VerifyEoR {
 		return Arrays.equals(eoo, eoo2);
 		
 	}
+	/**
+	 * update eor
+	 */
+	public void updateeor(String eor){
+		fileDBRepository.updateEor(eor);
+	}
 	
 	/**
 	 * give the EOR to the sender through the Email or SQS
 	 * 
 	 */
-	public void sendEor(String fileID){
-		communication.sendEor(fileID);
+	public void sendEor(String clientid,String fileID){
+		communication.sendEor(clientid,fileID);
 
 	}
 }

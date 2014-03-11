@@ -24,13 +24,13 @@ public class Communication {
 	 * sent the eoo
 	 * @param fileid
 	 */
-	public void sendEoo(String fileid){
+	public void sendEoo(String email,String fileid){
 		
 	}
 	/**
 	 * sent the eor
 	 */
-	public void sendEor(String fileid){
+	public void sendEor(String email,String fileid){
 		
 		
 	}

@@ -15,7 +15,6 @@ import com.groupproject.data.ClientDBRepository;
 import com.groupproject.data.FileDBRepository;
 import com.groupproject.data.FileStorage;
 import com.groupproject.model.File;
-import com.groupproject.rest.GenerateString;
 
 
 
@@ -93,8 +92,8 @@ public class FileVerify {
 	 * send URLto the communication class
 	 * 
 	 */
-	public void SetEoo(String fileid){
-		communication.sendEoo(fileid);
+	public void SetEoo(String clientid,String fileid){
+		communication.sendEoo(clientid,fileid);
 		
 	}
 	/**

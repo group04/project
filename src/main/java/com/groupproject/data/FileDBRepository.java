@@ -50,11 +50,34 @@ public class FileDBRepository {
 	 */
 	public String getName(String fileid){
 		return null;
-		
-		
+				
 	}
+	/**
+	 * get the sender
+	 * @param fileid
+	 * @return
+	 */
 	public String getSender(String fileid){
 		return null;
 	}
-
+	/**
+	 * get the receiver
+	 */
+	public String getReceiver(String fileid){
+		return fileid;
+		
+	}
+	/**
+	 * update the eor
+	 */
+	public void updateEor(String eor){
+		
+	}
+	/**
+	 * get the key for the doc
+	 */
+	public String getdocKey(String fileid){
+		return null;
+		
+	}
 }
