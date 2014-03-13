@@ -44,17 +44,17 @@ public class ProcessClient {
 		String prkey=CodeExchange.getString(gene.getPrivatekey());
 		client.setPublicKey(pukey);
 		//client.setPrivateKey(prkey);
-		storage(client);
+		saveClientToDB(client);
 		return prkey;		
 	}
 	
 	
 	
 	/**
-	 * a method will storage the client inforamtion in the database
+	 * a method will store the client inforamtion in the database
 	 * 
 	 */	
-	public void storage(Client client){
+	public void saveClientToDB(Client client){
 		clientserver.save(client);
 		
 	}
