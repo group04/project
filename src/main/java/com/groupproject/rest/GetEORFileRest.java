@@ -36,14 +36,14 @@ public class GetEORFileRest {
 		if (fileID != null) {
 			if (clientID != null) {
 				if (fileDBRepository.getSender(fileID).equals(clientID)) {
-					String eooname = "eoo_for_"
+					String eorname = "eor_for_"
 							+ fileDBRepository.getName(fileID);
 					byte[] docStream = CodeExchange.getbyte(fileDBRepository.getfileeor(fileID));
 
 					return Response
 							.ok(docStream, MediaType.APPLICATION_OCTET_STREAM)
 							.header("content-disposition",
-									"attachment; filename = " + eooname)
+									"attachment; filename = " + eorname)
 							.build();
 				}
 			}
