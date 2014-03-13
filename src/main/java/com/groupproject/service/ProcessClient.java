@@ -25,7 +25,6 @@ public class ProcessClient {
 	}
 	
 	
-	
 	/**
 	 * a method will generate the public key and private key for the clientid
 	 * return a String[](public key and private key)
@@ -44,20 +43,19 @@ public class ProcessClient {
 		String pukey=CodeExchange.getString(gene.getPublickey());
 		String prkey=CodeExchange.getString(gene.getPrivatekey());
 		client.setPublicKey(pukey);
-		client.setPrivateKey(prkey);
-		storage(client);
-		return prkey;
-		
+		//client.setPrivateKey(prkey);
+		saveClientToDB(client);
+		return prkey;		
 	}
 	
 	
 	
 	/**
-	 * a method will storage the client inforamtion in the database
+	 * a method will store the client inforamtion in the database
 	 * 
 	 */	
-	public void storage(Client client){
-		clientserver.storageClient(client);
+	public void saveClientToDB(Client client){
+		clientserver.save(client);
 		
 	}
 
