@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class Email {
 	private String username="xhmiaoyuan@163.com";
-	private String password="MY19901111989my";	
+	private String password="";	
 	private String title="Notification";
 	private String sendserver="smtp.163.com";
 	public void setEmail(String email,String content){
