@@ -21,9 +21,9 @@ public class VerifyEoR {
 	 * given the EOR file and verify the EOR return true or false
 	 */
 	public Boolean verify(byte[] eoR,String fileID,String clientID){
-		byte[] pukey=CodeExchange.getbyte(clientdbrepository.getKey(clientID));
+		byte[] pukey=CodeExchange.getbyte(clientdbrepository.getPublicKey(clientID));
 		PublicKey publicKey=Encrypty.getPublicKey(pukey);
-		byte[] eoo=CodeExchange.getbyte(fileDBRepository.getfileEoo(fileID));
+		byte[] eoo=CodeExchange.getbyte(fileDBRepository.getEOO(fileID));
 		byte[] eoo2=Encrypty.decrypt(publicKey, eoR);
 
 		return Arrays.equals(eoo, eoo2);
@@ -32,8 +32,8 @@ public class VerifyEoR {
 	/**
 	 * update eor
 	 */
-	public void updateeor(String eor){
-		fileDBRepository.updateEor(eor);
+	public void updateeor(String fileid,String eor){
+		fileDBRepository.updateEor(fileid,eor);
 	}
 	
 	/**

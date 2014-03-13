@@ -1,92 +1,96 @@
 package com.groupproject.service;
 
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.logging.Logger;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.inject.Inject;
 
 import com.groupproject.data.ClientDBRepository;
 import com.groupproject.data.FileDBRepository;
-import com.groupproject.data.FileStorage;
+import com.groupproject.data.FileManager;
 import com.groupproject.model.File;
 
 
 
 public class FileVerify {
 	@Inject
-	private ClientDBRepository clientserver;
+	private ClientDBRepository clientDBRepository;
 	@Inject
-	private FileDBRepository fileexchangeserver;
+	private FileDBRepository fileDBRepository;
 	@Inject
-	private Verify verifyfil;
+	private Verify verifyFile;
 	@Inject
-	private FileStorage filestorage;
+	private FileManager fileManager;
 	@Inject
 	private Communication communication;
 	
 	
 	/**
-	 *a method given a file and Sig(h(doc)) and clientsenderid 
-	 *return true or false
-
+	 * Calls a method that authenticate the origin of the method
+	 * @param eoo
+	 * @param doc
+	 * @param senderId
+	 * @return boolean
 	 */
 	public Boolean verify(byte[] eoo,byte[] doc,String senderId){
-		verifyfil.verify(eoo, doc, senderId);
-		return null;
-		
+		verifyFile.verify(eoo, doc, senderId);
+		return null;		
 	}
+	
 	/**
-	 * verify the sender and receiver is exist
-	 * return fileID if both of them exist
+	 * Checks if both sender and receiver exist
+	 * @param sender
+	 * @param receiver
+	 * @return boolean
 	 */
-	public Boolean check(String sender,String receiver){
+	public Boolean verifySender(String sender,String receiver){
 		
-		if(clientserver.SearchClient(sender)&&clientserver.SearchClient(receiver)){
-		
-			
-			return true;
-		
+		if(clientDBRepository.SearchClient(sender)&&clientDBRepository.SearchClient(receiver)){			
+			return true;	
 		}
 		return false;
 	}
+	
 	/**
-	 * Randomly generate a fileID generate a 20 long Srting type(you can get the current time then hash the object)
+	 * Randomly generate a fileID generate a 20-character long string.
 	 * @param file
 	 * @param senderID
-	 * @return
+	 * @return string
 	 */
 	public String getFileID(){
 		return GenerateString.generateString(20);
 		
 	}
 	
+	/**
+	 * Get a file key that is used to store the file in S3
+	 * @param fileid
+	 * @return string
+	 */
 	public String getFilekey(String fileid){
 		String filekey=fileid+GenerateString.generateString(5);
 		return filekey;
 		
 	}
+	
 	/**
 	 * create an folder use the name of the fileID and Storage the doc in the catalog
 	 * return the folder relative path
+	 * @throws IOException 
 	 */
-	public void storageDoc(String key,byte[] doc){
-		filestorage.storage(key,doc); 
-
-				
+	public void storeFile(String key,byte[] doc){
+		try {
+			fileManager.uploadFile(doc,key);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 				
 	}
 	/**
 	 * storage the FileExchange in the database
 	 * 
 	 */
-	public void Stroage(File fileexchange){
-		fileexchangeserver.save(fileexchange);
-		
+	public void store(File fileexchange){
+		fileDBRepository.save(fileexchange);		
 	}
 	/**
 	 * send URLto the communication class

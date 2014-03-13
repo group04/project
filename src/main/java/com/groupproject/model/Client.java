@@ -3,16 +3,16 @@ package com.groupproject.model;
 public class Client {
 	private String clientID;
 	private String publicKey;
-	private String privateKey;
-	private int nummessage;
+
+	private String nummessage;
 	
 	public Client(){
-		this.nummessage=0;
+		
 	}
-	public int getNummessage() {
+	public String getNummessage() {
 		return nummessage;
 	}
-	public void setNummessage(int nummessage) {
+	public void setNummessage(String nummessage) {
 		this.nummessage = nummessage;
 	}
 	public String getClientID() {
@@ -27,12 +27,7 @@ public class Client {
 	public void setPublicKey(String publicKey) {
 		this.publicKey = publicKey;
 	}
-	public String getPrivateKey() {
-		return privateKey;
-	}
-	public void setPrivateKey(String privateKey) {
-		this.privateKey = privateKey;
-	}
+	
 	
 
 }

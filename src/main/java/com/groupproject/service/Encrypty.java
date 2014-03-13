@@ -48,6 +48,11 @@ public class Encrypty {
 			return re;
 		
 	}
+	/**
+	 * return
+	 * @param by
+	 * @return
+	 */
 
 	public static PublicKey getPublicKey(byte[] by)
 			{
@@ -70,6 +75,13 @@ public class Encrypty {
 
 	}
 
+	/**
+	 * 
+	 * @param by
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeySpecException
+	 */
 	public static PrivateKey getPrivateKey(byte[] by)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		PKCS8EncodedKeySpec privatekeyspec = new PKCS8EncodedKeySpec(by);
@@ -78,8 +90,13 @@ public class Encrypty {
 		return privatekk;
 
 	}
+	/**
+	 * Hash a given byte array using SHA agorithm
+	 * @param file byte array
+	 * @return hash of the file
+	 */
 
-	public static byte[] getbyte(byte[] file) {
+	public static byte[] getHash(byte[] file) {
 		MessageDigest md = null;
 		try {
 			md = MessageDigest.getInstance("SHA");

@@ -20,9 +20,13 @@ public class File {
 	private final int ABORT=-1;
 
 	public File(){
-		this.Eoo=null;
-		this.Eor=null;
+		this.Eoo="NA";
+		this.Eor="NA";
 		this.state="new";
+		this.keyfordoc=keyfordoc;
+		this.filename=keyfordoc;
+		this.clientRecever="NA";
+		this.clientSender="NA";
 	}
 	public String getKeyfordoc() {
 		return keyfordoc;

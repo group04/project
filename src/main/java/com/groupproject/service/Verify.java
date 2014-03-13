@@ -26,10 +26,10 @@ public class Verify {
  * return true  if the encryption file is come from the client  or false
  */
 	public Boolean verify(byte[] eoo,byte[] doc,String ClientID){
-		String publickey=clientserver.getKey(ClientID);
+		String publickey=clientserver.getPublicKey(ClientID);
 		byte[] pubkey=CodeExchange.getbyte(publickey);
 		//verify the eoo
-		byte[] hash=Encrypty.getbyte(doc);
+		byte[] hash=Encrypty.getHash(doc);
 		PublicKey publickk=Encrypty.getPublicKey(pubkey);
 		byte[] eoo2=Encrypty.decrypt(publickk, hash);
 		

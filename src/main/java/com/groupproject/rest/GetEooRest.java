@@ -9,36 +9,34 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.groupproject.data.FileDBRepository;
-import com.groupproject.data.FileStorage;
 import com.groupproject.service.CodeExchange;
-import com.groupproject.service.VerifyEoR;
 
-@Path("/geteor")
-public class GetEORFileRest {
+/**
+ * this class is used to given a link to the client to download the EOO file
+ * 
+ * @author hp
+ * 
+ */
+@Path("/get")
+public class GetEooRest {
 	@Inject
-	private VerifyEoR verifyeor;
-	@Inject
-	private FileDBRepository fileDBRepository;
-	@Inject
-	private FileStorage fileStorage;
-
+	private FileDBRepository fileDBRespoitory;
 
 	/**
-	 * POST The fileId , clientidsender .
-	 * @return URL for the EOR
+	 * a request given a fileID and the clientID to get the EOO file
+	 * 
 	 */
-
 	@POST
-	@Path("/eor")
+	@Path("/eoo")
 	@Produces(MediaType.APPLICATION_OCTET_STREAM)
 	public Response downloadEoo(@FormParam("fileID") String fileID,
 			@FormParam("clientID") String clientID) throws Exception {
 		if (fileID != null) {
 			if (clientID != null) {
-				if (fileDBRepository.getSender(fileID).equals(clientID)) {
+				if (fileDBRespoitory.getReceiver(fileID).equals(clientID)) {
 					String eooname = "eoo_for_"
-							+ fileDBRepository.getName(fileID);
-					byte[] docStream = CodeExchange.getbyte(fileDBRepository.getfileeor(fileID));
+							+ fileDBRespoitory.getName(fileID);
+					byte[] docStream = CodeExchange.getbyte(fileDBRespoitory.getEOO(fileID));
 
 					return Response
 							.ok(docStream, MediaType.APPLICATION_OCTET_STREAM)
